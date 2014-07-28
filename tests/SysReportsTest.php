@@ -18,7 +18,7 @@ class SysReportsTest extends \PHPUnit_Framework_TestCase
     {
         $SysReports = new SysReports();
 
-        $this->assertInternalType('integer', $SysReports->getLastOrders());
+        $this->assertInternalType('integer', $SysReports->getNumberOfLastOrders());
 //        $this->assertNotEmpty($SysReports->getLastOrders());
     }
 
@@ -26,7 +26,7 @@ class SysReportsTest extends \PHPUnit_Framework_TestCase
     {
         $SysReports = new SysReports();
 
-        $this->assertInternalType('integer', $SysReports->getNewUsers());
+        $this->assertInternalType('integer', $SysReports->getNumberOfNewUsers());
 //        $this->assertNotEmpty($SysReports->getNewUsers());
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace shopsys;
+namespace SysReports;
 
 class SysReports
 {

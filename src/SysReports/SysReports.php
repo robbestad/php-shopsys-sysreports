@@ -43,4 +43,27 @@ class SysReports
         return $val;
     }
 
+
+    public function getOrderJournal($dateRange = '')
+    {
+        if (empty($dateRange)) {
+            $dateRange = array(
+                date("Y-m-d 00:00:00", strtotime("-6 weeks")),
+                date("Y-m-d 23:59:59", strtotime("now"))
+            );
+        }
+
+        $db = new \SarMysql\SarMysql();
+        $val = $db->select("invoice i, billing b ",
+            array(
+                "i.ID",
+                "i.Created", "b.Method"
+            ),
+            "WHERE i.Active = 'Y'
+            AND i.billing = b.ID
+            AND i.Created >= ?
+            AND i.Created <= ?", array($dateRange[0], $dateRange[1]));
+        return $val;
+
+    }
 }

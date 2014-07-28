@@ -38,5 +38,11 @@ class SysReportsTest extends \PHPUnit_Framework_TestCase
 //        $this->assertNotEmpty($SysReports->getNewUsers());
     }
 
+    public function testGetOrderJournal(){
+        $SysReports = new SysReports();
+        var_dump($SysReports->getOrderJournal());
+//        $this->assertInternalType('array', $SysReports->getOrderJournal());
+    }
+
 
 }

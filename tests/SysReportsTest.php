@@ -40,7 +40,13 @@ class SysReportsTest extends \PHPUnit_Framework_TestCase
 
     public function testGetOrderJournal(){
         $SysReports = new SysReports();
-        var_dump($SysReports->getOrderJournal());
+//        var_dump($SysReports->getOrderJournal());
+//        $this->assertInternalType('array', $SysReports->getOrderJournal());
+    }
+
+    public function testGetInvoiceJournal(){
+        $SysReports = new SysReports();
+//        var_dump($SysReports->getInvoiceJournal());
 //        $this->assertInternalType('array', $SysReports->getOrderJournal());
     }
 

@@ -66,4 +66,29 @@ class SysReports
         return $val;
 
     }
+
+    public function getInvoiceJournal($dateRange = '')
+    {
+        if (empty($dateRange)) {
+            $dateRange = array(
+                date("Y-m-d 00:00:00", strtotime("-6 weeks")),
+                date("Y-m-d 23:59:59", strtotime("now"))
+            );
+        }
+
+        $db = new \SarMysql\SarMysql();
+        $val = $db->select("reskontro r, addressfaktura a, faktura f, faktura_billing b, billing bi",
+            array(
+                "r.ID", "r.Amount", "r.Date", "r.Userid", "r.Billingmethod",
+                "a.Name_First", "a.Name_Last", "f.Invoice", "bi.Method", "a.CountryCode"
+            ),
+            "WHERE r.Faktura = f.ID
+            AND f.ID = b.Faktura
+            AND bi.Invoice = r.Invoice
+            AND b.Addressfaktura = a.ID
+            AND r.Date >= ?
+            AND r.Date <= ?", array($dateRange[0], $dateRange[1]));
+        return $val;
+
+    }
 }
